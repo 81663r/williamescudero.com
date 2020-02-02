@@ -23,8 +23,6 @@ public class FavoritesControllerV1 {
     @Autowired
     private FavoritesService favoritesService;
 
-
-
     @ApiOperation(value = "Get all favorite things")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful")})
     @GetMapping(value = "/favorites", produces = {MediaType.APPLICATION_JSON_VALUE})

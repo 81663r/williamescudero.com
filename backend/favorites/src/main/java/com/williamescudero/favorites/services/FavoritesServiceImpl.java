@@ -11,9 +11,7 @@ import com.williamescudero.favorites.repositories.FavoriteItemsRepository;
 import com.williamescudero.favorites.repositories.FavoritesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class FavoritesServiceImpl implements FavoritesService {
 
     @Autowired

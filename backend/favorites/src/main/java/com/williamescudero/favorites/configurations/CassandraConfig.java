@@ -10,12 +10,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
 import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
+import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.convert.CassandraCustomConversions;
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
-import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
-@EnableCassandraRepositories
 public class CassandraConfig extends AbstractCassandraConfiguration {
 
     @Override
@@ -23,6 +22,16 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         return "williamescudero_com";
     }
 
+    @Override
+    public SchemaAction getSchemaAction(){
+        
+        return SchemaAction.CREATE_IF_NOT_EXISTS;
+    }
+
+    @Override
+    public String[] getEntityBasePackages() {
+        return new String[] {"com.williamescudero.favorites.entities"};
+    }
 
     @Bean
     public CassandraClusterFactoryBean cluster(){
@@ -31,6 +40,8 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         cluster.setContactPoints("localhost");
         // cluster.setPort(9142);
         cluster.setJmxReportingEnabled(false);
+
+        
 
         return cluster;
     }
