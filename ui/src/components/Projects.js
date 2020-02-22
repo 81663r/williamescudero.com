@@ -127,7 +127,7 @@ class Card extends React.Component{
                   </div>
 
                   {/** DDM DOCS */}
-                  <a href="#" style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} data-target={"#modal-"+project.id} data-toggle="modal" className="align-middle mr-3" id={"project-docs-"+project.id}><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>description</i>DOCS</a>
+                  {/* <a href="#" style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} data-target={"#modal-"+project.id} data-toggle="modal" className="align-middle mr-3" id={"project-docs-"+project.id}><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>description</i>DOCS</a> */}
 
                   <div className="modal fade" id={"modal-"+project.id} role="dialog">
                     <div className="modal-dialog" role="document">

@@ -7,6 +7,7 @@ import Blog from './components/Blog';
 import Education from './components/Education';
 import Projects from './components/Projects';
 import Work from './components/Work';
+import About from './components/About';
 
 class Navbar extends React.Component{
   constructor(){
@@ -52,6 +53,7 @@ class App extends React.Component{
     super();
 
     this.components = {
+      "about":{title:'things I am', payload:About},
       "favorites":{title:'things I like', payload:Favorites},
       "blog":{title:'things I say', payload:Blog},
       "projects":{title:'things I do', payload:Projects},
@@ -116,6 +118,7 @@ class App extends React.Component{
             <div className="row mt-4 justify-content-center">
               <div className="col-md-4">
                 <div className="row align-items-center justify-content-center" style={{letterSpacing:'1px', textTransform:'uppercase'}}>
+                  <a href="#" className="pr-4 main-nav-link" onClick={(e) => this.handleMenuClick('about', e)}>ABOUT</a>
                   <a href="#" className="pr-4 main-nav-link" onClick={(e) => this.handleMenuClick('blog', e)}>BLOG</a>
                   <a href="#" className="pr-4 main-nav-link" onClick={(e) => this.handleMenuClick('favorites', e)}>FAVORITES</a>
                   <a href="#" className="main-nav-link" onClick={(e) => this.handleMenuClick('projects', e)}>PROJECTS</a>
