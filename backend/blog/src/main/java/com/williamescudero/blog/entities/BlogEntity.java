@@ -1,7 +1,8 @@
-package com.williamescudero.favorites.entities;
+package com.williamescudero.blog.entities;
 
-import java.util.HashMap;
+import java.util.Date;
 import java.util.UUID;
+
 
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;
@@ -13,26 +14,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table("favoriteItems")
+@Table("blog")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class FavoriteItemsEntity{
+public class BlogEntity{
 
-    @PrimaryKeyColumn(name = "id", type = PrimaryKeyType.CLUSTERED)
+    @PrimaryKeyColumn(name = "id", type = PrimaryKeyType.PARTITIONED)
     UUID id;
-
-    @PrimaryKeyColumn(name = "favorite_id", type = PrimaryKeyType.PARTITIONED)
-    UUID favoriteid;
 
     @Column
     String title;
 
     @Column
-    Integer likes;
+    String content;
 
     @Column
-    HashMap<String, String> tags;
+    String author;
+
+    @Column
+    Date date;
+
+    
 
 }

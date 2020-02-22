@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 
 class Card extends React.Component{
@@ -28,7 +29,7 @@ class Card extends React.Component{
               <span style={{fontSize:'10px'}}>{data.date}</span>
             </div>
             <div className="ml-auto">
-              <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>thumb_up</i>24</span>
+              {/* <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>thumb_up</i>24</span> */}
               <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>share</i>SHARE</span>
             </div>
           </div>
@@ -43,7 +44,7 @@ class Blog extends React.Component{
   constructor(props){
     super(props)
 
-    this.state = {cpr:3};
+    this.state = {cpr:3, data:[]};
   }
 
   calculateRows(data){
@@ -55,16 +56,23 @@ class Blog extends React.Component{
     return calc % this.state.cpr == 0 ? rows : rows+1;
   }
 
+  componentDidMount(){
+    axios.get("http://localhost:81/api/v1/blog/posts", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+      this.setState({data:result.data});
+    })
+  }
+
   render(){
-    let data = [
-      {
-        title:'Of love and other mental illneses',
-        content:'this is the content of the article',
-        author:'william',
-        date:'01.04.2019, 3:07pm',
-        likes:'24',
-      }
-    ];
+    // let data = [
+    //   {
+    //     title:'Of love and other mental illneses',
+    //     content:'this is the content of the article',
+    //     author:'william',
+    //     date:'01.04.2019, 3:07pm',
+    //     likes:'24',
+    //   }
+    // ];
+    let data = this.state.data;
 
 
     let rows = [];

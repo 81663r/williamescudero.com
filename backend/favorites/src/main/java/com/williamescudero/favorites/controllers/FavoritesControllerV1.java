@@ -26,7 +26,7 @@ public class FavoritesControllerV1 {
     @ApiOperation(value = "Get all favorite things")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful")})
     @GetMapping(value = "/favorites", produces = {MediaType.APPLICATION_JSON_VALUE})
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:8081")
     public List<Favorite> getFavorites() {
 
         return this.favoritesService.getFavorites();

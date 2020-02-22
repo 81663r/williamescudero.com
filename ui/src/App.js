@@ -79,7 +79,7 @@ class App extends React.Component{
     console.log(document.cookie);
     document.cookie = "username=testing"
 
-    axios.get("http://localhost:81/api/v1/unique/cookie", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+    axios.get("http://localhost:81/api/v1/user/unique/cookie", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
       console.log(result.data);
     })
   }

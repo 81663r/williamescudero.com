@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.williamescudero</groupId>
-	<artifactId>user</artifactId>
+	<artifactId>blog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>blog</name>
+	<description>Blog microservice</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -73,7 +73,8 @@
 		  <artifactId>springfox-swagger-ui</artifactId>
 		  <version>2.9.2</version>
 		</dependency>
-	</dependencies>
+	
+ </dependencies>
 
 	<build>
 		<plugins>

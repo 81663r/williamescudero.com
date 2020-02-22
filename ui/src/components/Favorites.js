@@ -15,7 +15,7 @@ class Item extends React.Component{
           <a style={{fontSize:'14px'}} href="#" data-toggle="modal" data-target={"#modal-"+item.id}>{item.title}</a>
         </div>
         <div className="ml-auto ">
-          <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>thumb_up</i>{item.likes}</span>
+          {/* <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>thumb_up</i>{item.likes}</span> */}
         </div>
 
         <div className="modal fade" id={"modal-"+item.id} role="dialog" dd={item.id}>

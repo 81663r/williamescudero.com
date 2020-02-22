@@ -19,6 +19,16 @@
             "mainClass": "com.williamescudero.favorites.DemoApplication",
             "projectName": "favorites",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<blog>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.williamescudero.blog.DemoApplication",
+            "projectName": "blog",
+            "args": ""
         }
     ]
 }
