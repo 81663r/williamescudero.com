@@ -1,6 +1,7 @@
 package com.williamescudero.projects.entities;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -37,8 +38,8 @@ public class ProjectEntity{
     String source;
 
     @Column
+    Map<String, String> details;
+
+    @Column
     Date lastUpdate;
-
-    
-
 }

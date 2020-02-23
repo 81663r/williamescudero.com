@@ -1,6 +1,6 @@
 package com.williamescudero.favorites.models.favorites;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import lombok.AllArgsConstructor;
@@ -20,5 +20,5 @@ public class Item {
 
     Integer likes;
 
-    HashMap<String, String> tags;
+    Map<String, String> tags;
 }

@@ -16,15 +16,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Blog {
 
-    public Blog(BlogEntity blog){
-
-        setId(blog.getId());
-        setTitle(blog.getTitle());
-        setContent(blog.getContent());
-        setAuthor(blog.getAuthor());
-        setDate(blog.getDate());
-    }
-    
     UUID id;
 
     String title;
@@ -34,5 +25,14 @@ public class Blog {
     String author;
 
     Date date;
+
+    public Blog(BlogEntity blog){
+
+        setId(blog.getId());
+        setTitle(blog.getTitle());
+        setContent(blog.getContent());
+        setAuthor(blog.getAuthor());
+        setDate(blog.getDate());
+    }
 
 }

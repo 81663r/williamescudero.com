@@ -1,43 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 
-class Doc extends React.Component{
-  constructor(props){
-    super(props);
-
-  }
-  
-
-  render(){
-    return (
-      <div className="row justify-items-center p-2">
-        <div className="card">
-          <img src="../resources/img/logo192.png" className="card-img-top"></img>
-          <div className="card-body">
-            <h5 className="card-tile">Card Title</h5>
-            <p className="card-text">Some text that describes the resource herein</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
 
 class Card extends React.Component{
 
   constructor(props){
     super(props);
-
-    this.state = {cpr:2};
   }
 
-  calculateRows(data){
-
-    let calc = data.length / this.state.cpr;
-
-    let rows = parseInt(calc);
-
-    return calc % this.state.cpr == 0 ? rows : rows+1;
-  }
 
   render(){
 
@@ -45,21 +15,6 @@ class Card extends React.Component{
     let docs = project.docs;
     let rows = [];
     let details = [];
-
-    // Documents per row
-    for (let i = 0,offset=0; i < this.calculateRows(docs); i++){
-      let _data = docs.slice(offset, offset+this.state.cpr);
-      offset = offset+this.state.cpr;
-      rows.push(
-        <div className="row justify-content-center" key={i}>
-          {_data.map((row, idx) => 
-            <div className="col mr-1" key={idx} style={{overflow:'both'}}>
-              <Doc data={row}/>
-            </div>
-          )}
-        </div>
-      )
-    }
 
     return(
       <div className="row  shadow-sm rounded mb-2" style={{backgroundColor:'white'}}>
@@ -72,14 +27,14 @@ class Card extends React.Component{
               </div>
 
               <div className="row pl-4 pr-4 pt-0 pb-1">
-                <p style={{color:'grey'}}>this is the description of the project</p>
+                <p style={{color:'grey'}}>{project.description}</p>
               </div>
               
               {/**ACTION ROW */}
               <div className="row p-2 border-top align-items-center justify-content-center">
 
                 <div className="col" style={{fontSize: '11px', color:'grey'}}>
-                  <span> last update -> 01.04.2019, 02:34pm</span>
+                  <span> last update -> {project.lastUpdate}</span>
                 </div>
 
                 <div className="ml-auto">
@@ -169,7 +124,7 @@ class Projects extends React.Component{
   constructor(props){
     super(props)
 
-    this.state = {cpr:2};
+    this.state = {cpr:2, data:[]};
   }
 
   calculateRows(data){
@@ -181,77 +136,85 @@ class Projects extends React.Component{
     return calc % this.state.cpr == 0 ? rows : rows+1;
   }
 
+  componentDidMount(){
+    axios.get("http://localhost:82/api/v1/projects", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+      this.setState({data:result.data});
+    })
+  }
+
   render(){
-    let data = [
-      {
-        id:'1', 
-        name:'My first project', 
-        source:'https://github.com/81663r/relay',
-        docs:[
-          {
-            id:'1',
-            type:'doc',
-            name:'installation_manual.pdf',
-          },
-          {
-            id:'2',
-            type:'image',
-            name:'screenshot1.jpg'
-          }
-        ],
-        details:{
-          version:'1.0.0',
-          state:'in-progress',
-          created:'01.04.2019, 02:34pm'
-        }
-      },
-      {
-        id:'2', 
-        name:'My second project', 
-        source:'https://github.com/81663r/relay',
-        docs:[
-          {
-            id:'3',
-            type:'doc',
-            name:'installation_manual.pdf',
-          },
-          {
-            id:'4',
-            type:'image',
-            name:'screenshot1.jpg'
-          },
-          {
-            id:'5',
-            type:'image',
-            name:'screenshot1.jpg'
-          }
-        ],
-        details:{}
-      },
-      {
-        id:'3', 
-        name:'My third project', 
-        source:'https://github.com/81663r/relay',
-        docs:[
-          {
-            id:'6',
-            type:'doc',
-            name:'installation_manual.pdf',
-          },
-          {
-            id:'7',
-            type:'image',
-            name:'screenshot1.jpg'
-          },
-          {
-            id:'8',
-            type:'image',
-            name:'screenshot1.jpg'
-          }
-        ],
-        details:{}
-      }
-    ];
+    // let data = [
+    //   {
+    //     id:'1', 
+    //     name:'My first project', 
+    //     source:'https://github.com/81663r/relay',
+    //     docs:[
+    //       {
+    //         id:'1',
+    //         type:'doc',
+    //         name:'installation_manual.pdf',
+    //       },
+    //       {
+    //         id:'2',
+    //         type:'image',
+    //         name:'screenshot1.jpg'
+    //       }
+    //     ],
+    //     details:{
+    //       version:'1.0.0',
+    //       state:'in-progress',
+    //       created:'01.04.2019, 02:34pm'
+    //     }
+    //   },
+    //   {
+    //     id:'2', 
+    //     name:'My second project', 
+    //     source:'https://github.com/81663r/relay',
+    //     docs:[
+    //       {
+    //         id:'3',
+    //         type:'doc',
+    //         name:'installation_manual.pdf',
+    //       },
+    //       {
+    //         id:'4',
+    //         type:'image',
+    //         name:'screenshot1.jpg'
+    //       },
+    //       {
+    //         id:'5',
+    //         type:'image',
+    //         name:'screenshot1.jpg'
+    //       }
+    //     ],
+    //     details:{}
+    //   },
+    //   {
+    //     id:'3', 
+    //     name:'My third project', 
+    //     source:'https://github.com/81663r/relay',
+    //     docs:[
+    //       {
+    //         id:'6',
+    //         type:'doc',
+    //         name:'installation_manual.pdf',
+    //       },
+    //       {
+    //         id:'7',
+    //         type:'image',
+    //         name:'screenshot1.jpg'
+    //       },
+    //       {
+    //         id:'8',
+    //         type:'image',
+    //         name:'screenshot1.jpg'
+    //       }
+    //     ],
+    //     details:{}
+    //   }
+    // ];
+
+    let data = this.state.data;
 
 
     let rows = [];

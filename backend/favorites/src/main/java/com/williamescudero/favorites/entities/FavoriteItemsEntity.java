@@ -1,6 +1,6 @@
 package com.williamescudero.favorites.entities;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
@@ -33,6 +33,6 @@ public class FavoriteItemsEntity{
     Integer likes;
 
     @Column
-    HashMap<String, String> tags;
+    Map<String, String> tags;
 
 }
