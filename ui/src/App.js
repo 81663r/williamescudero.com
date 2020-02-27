@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import crypto from 'crypto';
 
 import Favorites from './components/Favorites';
 import Blog from './components/Blog';
@@ -61,7 +59,7 @@ class App extends React.Component{
       "education":{title:'Education', payload:Education}
     };
 
-    this.state = {component:{header:this.components['favorites'].title, payload:Favorites}};
+    this.state = {component:{header:this.components['about'].title, payload:About}};
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
 
@@ -69,22 +67,6 @@ class App extends React.Component{
   }
   
   
-  componentWillMount(){
-
-  }
-
-  componentDidMount(){
-
-    let h = crypto.createHash('sha256');
-    h.update("some data yo");
-    console.log(h.digest('hex'));
-    console.log(document.cookie);
-    document.cookie = "username=testing"
-
-    axios.get("http://localhost:81/api/v1/user/unique/cookie", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
-      console.log(result.data);
-    })
-  }
 
   handleMenuClick(id){
     this.setState({
@@ -154,9 +136,9 @@ class App extends React.Component{
         <div className="row fixed-bottom">
           <div className="col">
             <div className="row align-items-center justify-content-center">
-              <i className="fab fa-facebook-square fa-2x mr-1"></i> 
-              <i className="fab fa-linkedin fa-2x mr-1"></i>
-              <i className="fab fa-github-square fa-2x"></i>
+              <a href="http://facebook.com/william.escudero.01" className="fab fa-facebook-square fa-2x mr-1" style={{color:'#212121'}}></a> 
+              <a href="https://www.linkedin.com/in/wescudero" className="fab fa-linkedin fa-2x mr-1" style={{color:'#212121'}}></a>
+              <a href="https://github.com/81663r" className="fab fa-github-square fa-2x" style={{color:'#212121'}}></a>
             </div>
           </div>
         </div>

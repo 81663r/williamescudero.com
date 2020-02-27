@@ -12,6 +12,9 @@ class About extends React.Component{
 
     return(
       <div>
+        <div className="row justify-content-center align-items-center">
+          <p>hello world</p>
+        </div>
       </div>
     )
   }

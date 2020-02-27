@@ -1,12 +1,15 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class Card extends React.Component{
 
   constructor(props){
     super(props);
+
+    
   }
+
 
 
   render(){
@@ -44,10 +47,13 @@ class Card extends React.Component{
                     <a href="#" style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3" data-toggle="dropdown" id={"project-source-"+project.id} aria-haspopup="true" aria-expanded="false"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>code</i>SOURCE</a>
                     <div className="dropdown-menu" aria-labelledby={"project-source-"+project.id} id={"project-source-"+project.id} style={{width:'300px'}}>
                       <div className="input-group input-group-sm pr-2 pl-2">
+
                         <input type="text" className="col-12 form-control" id={"project-source-container-"+project.id} aria-describedby="inputGroupAppend" value={project.source} readOnly={true}></input>
+                        <CopyToClipboard text={project.source}>
                         <div className="input-group-prepend">
-                          <button className="btn btn-outline-secondary" type="button" id={"project-source-btn-"+project.id}><i className="material-icons p-0 m-0" style={{verticalAlign:'middle', fontSize:'16px'}}>file_copy</i></button>
+                          <button className="btn btn-outline-secondary" type="button" id={"project-source-btn-"+project.id}><i className="material-icons p-0 m-0" style={{verticalAlign:'middle', fontSize:'16px'}} >file_copy</i></button>
                         </div>
+                        </CopyToClipboard>
                       </div>
                     </div>
                   </div>

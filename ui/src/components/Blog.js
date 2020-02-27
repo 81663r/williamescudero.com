@@ -30,7 +30,7 @@ class Card extends React.Component{
             </div>
             <div className="ml-auto">
               {/* <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>thumb_up</i>24</span> */}
-              <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>share</i>SHARE</span>
+              {/* <span style={{fontSize:'10px',color:'#757575', fontWeight:'bold'}} className="align-middle mr-3"><i className="material-icons mr-1" style={{verticalAlign:'middle', fontSize:'14px', color:'#9e9e9e'}}>share</i>SHARE</span> */}
             </div>
           </div>
         </div>
