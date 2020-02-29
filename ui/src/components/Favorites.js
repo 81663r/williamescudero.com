@@ -95,7 +95,7 @@ class Favorites extends React.Component{
   }
 
   componentDidMount(){
-    axios.get("http://localhost/api/v1/favorites", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+    axios.get("http://api.williamescudero.com:8081/api/v1/favorites", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
       this.setState({data:result.data});
     })
   }

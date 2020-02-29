@@ -28,7 +28,7 @@ public class ProjectsControllerV1 {
     @ApiOperation(value = "Get all projects")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Successful") })
     @GetMapping(value = "/projects", produces = {MediaType.APPLICATION_JSON_VALUE})
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://www.williamescudero.com")
     public List<Project> getProjects(){
         return this.projectsService.getProjects();
     }

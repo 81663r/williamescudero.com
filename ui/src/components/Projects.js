@@ -143,7 +143,7 @@ class Projects extends React.Component{
   }
 
   componentDidMount(){
-    axios.get("http://localhost:82/api/v1/projects", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+    axios.get("http://api.williamescudero.com:8082/api/v1/projects", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
       this.setState({data:result.data});
     })
   }

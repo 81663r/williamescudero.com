@@ -57,7 +57,7 @@ class Blog extends React.Component{
   }
 
   componentDidMount(){
-    axios.get("http://localhost:81/api/v1/blog/posts", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
+    axios.get("http://api.williamescudero.com:8083/api/v1/blog/posts", {headers:{'Access-Control-Allow-Origin':'*'}}).then(result => {
       this.setState({data:result.data});
     })
   }

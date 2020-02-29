@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.williamescudero.favorites.converters.HeaderConverter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -16,6 +17,15 @@ import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 
 @Configuration
 public class CassandraConfig extends AbstractCassandraConfiguration {
+
+    @Value("${spring.data.cassandra.username}")
+    private String cassandraUsername;
+
+    @Value("${spring.data.cassandra.password}")
+    private String cassandraPassword;
+
+    @Value("${spring.data.cassandra.contact-points}")
+    private String cassandraContactPoints;
 
     @Override
     protected String getKeyspaceName(){
@@ -37,9 +47,12 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     public CassandraClusterFactoryBean cluster(){
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
 
-        cluster.setContactPoints("localhost");
-        // cluster.setPort(9142);
+        cluster.setContactPoints(this.cassandraContactPoints);
+        cluster.setPort(9142);
         cluster.setJmxReportingEnabled(false);
+        cluster.setSslEnabled(true);
+        cluster.setUsername(this.cassandraUsername);
+        cluster.setPassword(this.cassandraPassword);
 
         
 

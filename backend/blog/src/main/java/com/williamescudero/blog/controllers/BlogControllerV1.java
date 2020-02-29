@@ -27,7 +27,7 @@ public class BlogControllerV1{
     @ApiOperation(value = "Get all blog posts")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Successful") })
     @GetMapping(value = "/posts", produces = {MediaType.APPLICATION_JSON_VALUE})
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://www.williamescudero.com")
     public List<Blog> getBlogPosts(){
         return blogService.getBlogPosts();
     }
